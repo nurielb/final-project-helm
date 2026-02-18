@@ -7,7 +7,7 @@ container:
   port: 5000
   image: 
     name: nurielbenjamin/final-project-backend
-    tag: "prod-c65b862"
+    tag: "prod-1f1e554"
 
 service:
   metadata:
