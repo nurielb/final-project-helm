@@ -20,10 +20,3 @@ spec:
             - containerPort: {{.Values.container.port}}
           args:
             - "-text={{.Values.messagePrefix}} {{.Values.container.image.tag}}"
-          env:
-            - 
-              name: {{.Values.secret.metadata.name}}
-              valueFrom:
-                secretKeyRef:
-                  name: {{.Values.secret.metadata.name}}
-                  key: password
