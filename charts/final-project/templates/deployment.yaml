@@ -21,5 +21,3 @@ spec:
           image: "{{.Values.container.image.name}}:{{.Values.container.image.tag}}"
           ports:
             - containerPort: {{.Values.container.port}}
-          args:
-            - "-text={{.Values.messagePrefix}} {{.Values.container.image.tag}}"
