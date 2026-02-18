@@ -15,3 +15,6 @@ service:
   port: 80
   targetPort: 5000
   type: ClusterIP
+
+imagePullSecrets:
+  - name: regcred
