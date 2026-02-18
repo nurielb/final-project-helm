@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.deployment.metadata.name}}
+spec:
+  replicas: {{.Values.deployment.replicas}}
+  selector: 
+    matchLabels:
+      app: {{.Values.deployment.metadata.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.deployment.metadata.name}}
+    spec:
+      containers:
+        -
+          name: {{.Values.deployment.metadata.name}}
+          image: "{{.Values.container.image.name}}:{{.Values.container.image.tag}}"
+          ports:
+            - containerPort: {{.Values.container.port}}
+          args:
+            - "-text={{.Values.messagePrefix}} {{.Values.container.image.tag}}"
+          env:
+            - 
+              name: {{.Values.secret.metadata.name}}
+              valueFrom:
+                secretKeyRef:
+                  name: {{.Values.secret.metadata.name}}
+                  key: password

@@ -1,0 +1,17 @@
+deployment:
+  metadata:
+    name: final-project
+  replicas: 3
+
+container:
+  port: 5000
+  image: 
+    name: nurielbenjamin/final-project
+    tag: "0.1.0"
+
+service:
+  metadata:
+    name: hashicorp-service
+  port: 80
+  targetPort: 5000
+  type: ClusterIP
