@@ -11,7 +11,7 @@ container:
 
 service:
   metadata:
-    name: hashicorp-service
+    name: final-project-service
   port: 80
   targetPort: 5000
   type: ClusterIP
