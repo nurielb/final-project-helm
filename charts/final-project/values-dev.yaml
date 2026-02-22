@@ -2,19 +2,16 @@ deployment:
   metadata:
     name: final-project
   replicas: 3
-
 container:
   port: 5000
-  image: 
+  image:
     name: nurielbenjamin/final-project-backend
-    tag: "prod-1f1e554"
-
+    tag: "development-4cef069"
 service:
   metadata:
     name: final-project-service
   port: 80
   targetPort: 5000
   type: ClusterIP
-
 imagePullSecrets:
   - name: regcred
