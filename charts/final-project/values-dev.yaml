@@ -6,7 +6,7 @@ container:
   port: 5000
   image:
     name: nurielbenjamin/final-project-backend
-    tag: "development-4cef069"
+    tag: "development-359bdfc"
 service:
   metadata:
     name: final-project-service
