@@ -1,11 +1,16 @@
-grafana:
-  admin:
-    existingSecret: "grafana-admin"
-    userKey: admin-user
-    passwordKey: admin-password
-  service:
-  type: ClusterIP
+loki:
+  deploymentMode: SingleBinary
 
-prometheus:
-  prometheusSpec:
-  retention: 7d
+  loki:
+    auth_enabled: false
+    commonConfig:
+      replication_factor: 1
+    storage:
+      type: filesystem
+
+  singleBinary:
+    replicas: 1
+
+  persistence:
+    enabled: true
+    size: 5Gi
