@@ -7,9 +7,6 @@ loki:
       replication_factor: 1
     storage:
       type: filesystem
-    storage_config:
-      filesystem:
-        directory: /tmp/loki/
   
   singleBinary:
     replicas: 1
