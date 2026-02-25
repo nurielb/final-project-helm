@@ -1,14 +1,11 @@
-loki:
-  loki:
-    auth_enabled: false
-    commonConfig:
-      replication_factor: 1
-    storage:
-      type: filesystem
+grafana:
+  admin:
+    existingSecret: "grafana-admin"
+    userKey: admin-user
+    passwordKey: admin-password
+  service:
+  type: ClusterIP
 
-  singleBinary:
-    replicas: 1
-
-  persistence:
-    enabled: true
-    size: 5Gi
+prometheus:
+  prometheusSpec:
+  retention: 7d
