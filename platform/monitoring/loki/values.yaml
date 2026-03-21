@@ -1,4 +1,8 @@
+deploymentMode: SingleBinary
+
 loki:
+  auth_enabled: false
+
   schemaConfig:
     configs:
       - from: "2024-01-01"
@@ -14,7 +18,20 @@ loki:
       chunks: dummy
       ruler: dummy
       admin: dummy
-      
+
   storage_config:
     filesystem:
       directory: /var/loki/chunks
+
+singleBinary:
+  replicas: 1
+  persistence:
+    enabled: true
+    size: 5Gi
+
+write:
+  replicas: 0
+read:
+  replicas: 0
+backend:
+  replicas: 0
