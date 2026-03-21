@@ -1,6 +1,14 @@
 loki:
   deploymentMode: SingleBinary
 
+  chunksCache:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 256Mi
+  
   loki:
     auth_enabled: false
 
@@ -26,14 +34,6 @@ loki:
     storage_config:
       filesystem:
         directory: /var/loki/chunks
-
-    chunksCache:
-      resources:
-        requests:
-          cpu: 100m
-          memory: 256Mi
-        limits:
-          memory: 256Mi
 
   singleBinary:
     replicas: 1
