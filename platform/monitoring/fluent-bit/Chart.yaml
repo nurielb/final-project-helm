@@ -1,0 +1,11 @@
+apiVersion: v2
+name: monitoring-fluent-bit
+description: A Helm chart for fluent-bit
+type: application
+version: 0.1.0
+appVersion: latest
+
+dependencies:
+  - name: fluent-bit
+    version: 2.56.0
+    repository: https://fluent.github.io/helm-charts

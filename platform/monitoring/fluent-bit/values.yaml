@@ -1,0 +1,20 @@
+kind: DaemonSet
+
+config:
+  inputs: |
+    [INPUT]
+        Name tail
+        Path /var/log/containers/*.log
+        Tag kube.*
+
+  filters: |
+    [FILTER]
+        Name kubernetes
+        Match kube.*
+
+  outputs: |
+    [OUTPUT]
+        Name loki
+        Match *
+        Host loki-gateway.monitoring
+        Port 80
