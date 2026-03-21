@@ -1,20 +1,22 @@
 kind: DaemonSet
 
-config:
-  inputs: |
-    [INPUT]
-        Name tail
-        Path /var/log/containers/*.log
-        Tag kube.*
+fluent-bit:
 
-  filters: |
-    [FILTER]
-        Name kubernetes
-        Match kube.*
+  config:
+    inputs: |
+      [INPUT]
+          Name tail
+          Path /var/log/containers/*.log
+          Tag kube.*
 
-  outputs: |
-    [OUTPUT]
-        Name loki
-        Match *
-        Host loki-gateway.monitoring
-        Port 80
+    filters: |
+      [FILTER]
+          Name kubernetes
+          Match kube.*
+
+    outputs: |
+      [OUTPUT]
+          Name loki
+          Match *
+          Host loki-gateway.monitoring
+          Port 80
