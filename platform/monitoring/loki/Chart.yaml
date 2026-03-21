@@ -1,11 +1,14 @@
-apiVersion: v2
-name: loki
-description: A Helm chart for monitoring stack
-type: application
-version: 0.1.0
-appVersion: latest
+loki:
+  schemaConfig:
+    configs:
+      - from: "2024-01-01"
+        store: tsdb
+        object_store: filesystem
+        schema: v13
+        index:
+          prefix: loki_index_
+          period: 24h
 
-dependencies:
-  - name: loki
-    version: 6.55.0
-    repository: https://grafana.github.io/helm-charts
+  storage_config:
+    filesystem:
+      directory: /var/loki/chunks
