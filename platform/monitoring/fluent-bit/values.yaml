@@ -23,6 +23,6 @@ fluent-bit:
     outputs: |
       [OUTPUT]
           Name loki
-          Match *
+          Match kube.*
           Host loki-gateway.monitoring
           Port 80
