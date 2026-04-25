@@ -27,6 +27,19 @@ kube-prometheus-stack:
       retention: 7d
 
   additionalPrometheusRulesMap:
+    test-alerts:
+      groups:
+        - name: test.rules
+          rules:
+            - alert: AlwaysFiringTestAlert
+              expr: vector(1)
+              for: 30s
+              labels:
+                severity: test
+              annotations:
+                summary: "Test alert is firing"
+                description: "This alert always fires. Use it only to verify Prometheus/Grafana alert visibility."
+
     custom-alerts:
       groups:
         - name: custom.rules
