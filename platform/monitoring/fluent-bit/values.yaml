@@ -5,7 +5,7 @@ config:
     [INPUT]
         Name tail
         Path /var/log/containers/*.log
-        Tag kube.*
+        Tag kube.var.log.containers.*
         multiline.parser docker, cri
         Mem_Buf_Limit 50MB
         Skip_Long_Lines On
