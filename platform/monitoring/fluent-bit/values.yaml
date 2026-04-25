@@ -36,7 +36,13 @@ fluent-bit:
           K8S-Logging.Parser On
           K8S-Logging.Exclude Off
 
+
     outputs: |
+      [OUTPUT]
+          Name stdout
+          Match *
+          Format json_lines
+
       [OUTPUT]
           Name loki
           Match *
