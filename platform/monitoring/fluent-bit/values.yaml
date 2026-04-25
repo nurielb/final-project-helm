@@ -21,6 +21,7 @@ fluent-bit:
           Name tail
           Path /var/log/containers/*.log
           Tag kube.var.log.containers.*
+          Path_Key filename
           multiline.parser docker, cri
           Mem_Buf_Limit 50MB
           Skip_Long_Lines On
