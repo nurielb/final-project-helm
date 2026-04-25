@@ -31,9 +31,9 @@ kube-prometheus-stack:
       groups:
         - name: custom.rules
           rules:
-            - alert: HighCPUUsage
+            - alert: ProductionHighCPUUsage
               expr: |
-                sum(rate(container_cpu_usage_seconds_total{namespace="production", container!=""}[5m]))
+                sum(rate(container_cpu_usage_seconds_total{namespace="production"}[5m]))
                 /
                 sum(machine_cpu_cores)
                 * 100 > 80
@@ -41,4 +41,38 @@ kube-prometheus-stack:
               labels:
                 severity: warning
               annotations:
-                summary: "High CPU usage"
+                summary: "Production High CPU usage"
+
+            - alert: ProductionHighMemoryUsage
+              expr: |
+                sum(container_memory_usage_bytes{namespace="production"}) 
+                / sum(machine_memory_bytes) 
+                * 100 > 80
+              for: 2m
+              labels:
+                severity: warning
+              annotations:
+                summary: "Production High CPU Usage"
+
+            - alert: DevelopmentHighCPUUsage
+              expr: |
+                sum(rate(container_cpu_usage_seconds_total{namespace="development"}[5m]))
+                /
+                sum(machine_cpu_cores)
+                * 100 > 80
+              for: 2m
+              labels:
+                severity: warning
+              annotations:
+                summary: "Development High CPU Usage"
+
+            - alert: DevelopmentHighMemoryUsage
+              expr: |
+                sum(container_memory_usage_bytes{namespace="development"}) 
+                / sum(machine_memory_bytes) 
+                * 100 > 80
+              for: 2m
+              labels:
+                severity: warning
+              annotations:
+                summary: "Development High Memory Usage"
