@@ -49,7 +49,7 @@ fluent-bit:
           Host loki-gateway.monitoring.svc.cluster.local
           Port 80
           Labels job=fluent-bit
-          Label_Keys $kubernetes['namespace_name'],$kubernetes['pod_name'],$kubernetes['container_name']
+          Label_Keys kubernetes.namespace_name,kubernetes.pod_name,kubernetes.container_name
 
     customParsers: |
       [PARSER]
