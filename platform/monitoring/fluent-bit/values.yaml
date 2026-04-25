@@ -23,9 +23,10 @@ fluent-bit:
 
     outputs: |
       [OUTPUT]
-          Name                  loki
-          Match                 kube.var.log.containers.*
-          Host                  loki-gateway.monitoring
-          Port                  80
-          Labels                job=fluent-bit,namespace=$kubernetes['namespace_name'],pod=$kubernetes['pod_name'],container=$kubernetes['container_name']
-          Line_Format           json
+          Name        loki
+          Match       kube.var.log.containers.*
+          Host        loki-gateway.monitoring
+          Port        80
+          Labels      job=fluent-bit
+          Label_Keys  $kubernetes['namespace_name'],$kubernetes['pod_name'],$kubernetes['container_name']
+          Line_Format json
