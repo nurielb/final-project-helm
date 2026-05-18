@@ -1,0 +1,11 @@
+apiVersion: v2
+name: messaging-rabbitmq
+description: A Helm chart for rabbitmq
+type: application
+version: 0.1.0
+appVersion: latest
+
+dependencies:
+  - name: rabbitmq
+    version: 15.3.0
+    repository: https://charts.bitnami.com/bitnami
