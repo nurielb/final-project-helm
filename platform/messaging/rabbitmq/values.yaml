@@ -1,3 +1,7 @@
+rabbitmq:
+  image:
+    repository: bitnamilegacy/rabbitmq
+    
 auth:
   username: admin
   password: admin
